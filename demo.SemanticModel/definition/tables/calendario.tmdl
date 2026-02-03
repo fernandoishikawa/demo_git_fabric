@@ -1,0 +1,87 @@
+table calendario
+	lineageTag: 2f75c73b-d476-4a00-bce2-266fd19b7494
+	dataCategory: Time
+
+	column Data
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 5d90d36c-761f-44a8-b40b-3ed40bbf0b2d
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: e991b809-aa24-46d8-ac50-00b4cb0445ad
+		summarizeBy: none
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = User
+
+	column MesAno
+		dataType: string
+		lineageTag: 6fb51846-296f-400c-9421-db0e389679e5
+		summarizeBy: none
+		sourceColumn: MesAno
+		sortByColumn: MesInicio
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesInicio
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bcdd69a7-45f1-4f18-a8d8-cff4bb163ba3
+		summarizeBy: none
+		sourceColumn: MesInicio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition calendario = m
+		mode: import
+		queryGroup: Dimensões
+		source = ```
+				let
+				    dataInicial = data_inicial, 
+				    dataFinal = data_final, 
+				    
+				    datas = List.Dates(
+				        dataInicial, 
+				        Duration.Days(dataFinal-dataInicial) + 1, 
+				        #duration(1, 0, 0, 0)
+				    ),
+				
+				    calendario = #table(
+				        type table[
+				            Data = date,
+				            Ano = Int64.Type,
+				            MesAno = text,
+				            MesInicio = date
+				        ],
+				        List.Transform(
+				            datas,
+				            each {
+				                _,
+				                Date.Year(_),
+				                Date.ToText(_, [Format="MMM/yy", Culture="pt-BR"]),
+				                Date.StartOfMonth(_)
+				            }
+				        )
+				    )
+				
+				in
+				    calendario
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
