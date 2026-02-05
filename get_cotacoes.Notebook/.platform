@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "get_cotacoes",
+    "description": "Notebook para buscar cotacoes"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "42cc34b0-c378-aa06-4d52-620c4c7f27f6"
+  }
+}

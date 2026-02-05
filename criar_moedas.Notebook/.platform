@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "criar_moedas",
+    "description": "Notebook para criação da tabela moedas\n"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e9bd2ea9-eee3-b53c-4b6d-4812de934515"
+  }
+}
