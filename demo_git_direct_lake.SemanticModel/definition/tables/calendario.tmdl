@@ -1,0 +1,65 @@
+table calendario
+	lineageTag: 08400ccc-bfe6-4632-841e-a5978062e951
+	sourceLineageTag: [dbo].[calendario]
+
+	column Data
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: date
+		lineageTag: a8f31f4f-d67f-45e6-9d59-b68ba1de4983
+		sourceLineageTag: Data
+		summarizeBy: none
+		sourceColumn: Data
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 29377488-09f3-4bc4-9aa5-610c086f1557
+		sourceLineageTag: Ano
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesAno
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 39bf0e37-ad30-4d37-9d80-92726b1342dd
+		sourceLineageTag: MesAno
+		summarizeBy: none
+		sourceColumn: MesAno
+		sortByColumn: MesInicio
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesInicio
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: date
+		lineageTag: 6c9c12ea-981d-42e2-bda3-5638af489c00
+		sourceLineageTag: MesInicio
+		summarizeBy: none
+		sourceColumn: MesInicio
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	partition calendario = entity
+		mode: directLake
+		source
+			entityName: calendario
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
