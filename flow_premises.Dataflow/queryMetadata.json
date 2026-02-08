@@ -1,0 +1,59 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 2",
+  "queryGroups": [],
+  "documentLocale": "pt-BR",
+  "gatewayObjectId": "5c59eecb-a5bd-4857-b309-3a03fa0a6259",
+  "queriesMetadata": {
+    "data_inicial": {
+      "queryId": "3358d91b-0320-44df-9ba8-7ae035d84f5c",
+      "queryName": "data_inicial",
+      "loadEnabled": false
+    },
+    "calendario": {
+      "queryId": "7cb0f1e1-cc2b-4282-bc13-6c8c4aa8621d",
+      "queryName": "calendario",
+      "loadEnabled": false
+    },
+    "data_final": {
+      "queryId": "3da05c57-bfb6-4c35-97a8-7b49f28840ee",
+      "queryName": "data_final",
+      "loadEnabled": false
+    },
+    "base_transacoes": {
+      "queryId": "b6b0d9c2-2006-4403-a043-0d2f29e38ea9",
+      "queryName": "base_transacoes",
+      "loadEnabled": false
+    },
+    "transacoes": {
+      "queryId": "7ff34a1e-0af8-485d-9275-a6f3e8874556",
+      "queryName": "transacoes",
+      "loadEnabled": false
+    },
+    "calendario_DataDestination": {
+      "queryId": "fe678fb3-f397-478a-a808-e5e139be73a2",
+      "queryName": "calendario_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "transacoes_DataDestination": {
+      "queryId": "7bb15d8f-c477-4540-a1de-ea887ae974b8",
+      "queryName": "transacoes_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "D:\\git_fabric_projeto\\transacoes.xlsx",
+      "kind": "File",
+      "connectionId": "{\"ClusterId\":\"5c59eecb-a5bd-4857-b309-3a03fa0a6259\",\"DatasourceId\":\"0a24a473-6dcf-4a25-b347-4828ab792356\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"98e21579-ce78-4146-8fe4-13e63b74c9ea\",\"DatasourceId\":\"6767e39c-4693-44db-aec2-b83334be644b\"}"
+    }
+  ]
+}
